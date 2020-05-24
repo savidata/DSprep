@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+<center>
+  <div class="card" style="width: 40rem; height: 20rem; justify-content: center;">
+    <div class="">
+      <h3 class="card-text">{{ card_text }} </h3>
+    </div>
+  </div>
+  <form action="{% url 'interview' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <input type="hidden"  name="old_index" value="{{ index }}">
+      <input type="hidden"  name="card_face" value="{{ is_front }}">
+    </div>
+    <br/>
+    <form>
+      <div class="row" style="width: 40rem;">
+        <div class="col">
+          <button type="submit" class="btn btn-primary" style="width: 10rem;" name="button" value="1">Previous</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary" style="width: 10rem;" name="button" value="2">Hint</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary" style="width: 10rem;" name="button" value="3">Next</button>
+        </div>
+      </div>
+    </form>
+  </form>
+  
+
+</center>
+{% endblock %}
